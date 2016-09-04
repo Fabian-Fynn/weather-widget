@@ -1,1 +1,50 @@
+html {
+  box-sizing: border-box; }
 
+.weather-widget {
+  width: 300px;
+  height: 150px;
+  background-color: #ccc; }
+  .weather-widget .left, .weather-widget .right {
+    width: 150px;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle; }
+  .weather-widget .left {
+    border-right: 1px solid #000; }
+  .weather-widget .right .current-temp {
+    font-size: 30pt;
+    margin-bottom: -5px;
+    line-height: 1; }
+  .weather-widget .right .city input {
+    width: 100%;
+    font-size: 15pt;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid transparent; }
+  .weather-widget .right .city.editable input {
+    border-bottom: 1px solid #000; }
+  .weather-widget .right .location-btns {
+    width: 28px;
+    height: 10px;
+    text-align: center;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%); }
+    .weather-widget .right .location-btns * {
+      float: left;
+      cursor: pointer; }
+  .weather-widget button {
+    border: none;
+    background: none; }
+  .weather-widget input {
+    border: none;
+    background: none;
+    color: #000; }
+    .weather-widget input:focus {
+      outline: none; }
+
+/*# sourceMappingURL=weather.css.map */

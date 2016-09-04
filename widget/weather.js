@@ -26,13 +26,18 @@ function weather(options) {
 
   //create HTML elements
   var $element = $("#" + options.element);
-  $element.html("<div class=city><input type=text value='" + city + "'><button>Set</button></div>\
-  <div class=icon></div>\
-  <div class=temp>\
-  <div class=current-temp>" + tempSymbol + "</div>\
-  <div class=location-btns>\
-  <div class=geolocation>GEO</div><div class=edit-city-name>Enter City Name</div>\
-  </div>");
+  $element.addClass("weather-widget");
+  $element.html("<div class=left>\
+                  <div class=icon></div>\
+                </div><div class=right>\
+                  <div class=temp>\
+                    <div class=current-temp>" + tempSymbol + "</div>\
+                  </div>\
+                  <div class=city><input type=text value='" + city + "'></div>\
+                  <div class=location-btns>\
+                  <div class=geolocation>&#8982;</div><div class=edit-city-name> &#9998;</div>\
+                </div></div>"
+               );
 
   $element.find(".geolocation").click(function(el) {
     geolocate();
@@ -42,8 +47,19 @@ function weather(options) {
     editCity();
   });
 
-  $element.find(".city button").click(function(el) {
-    setCity();
+  $element.find(".city input").click(function(el) {
+    editCity();
+  });
+
+  $element.find(".city input").keyup(function(event){
+    if(event.keyCode == 13){
+      setCity();
+      $(this).blur();
+    }
+  });
+
+  $element.find(".city input").blur(function(event){
+      setCity();
   });
 
   if (options.tempRange !== false) {
@@ -95,9 +111,11 @@ function weather(options) {
   };
 
   function setCity() {
-    var city = $element.find(".city input").val();
+    var $city = $element.find(".city");
+    var city = $city.find("input").val();
     localStorage.setItem("city", city);
     getWeatherByCityName(city);
+    $city.removeClass("editable");
   }
 
   function locationError(err) {
