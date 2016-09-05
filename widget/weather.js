@@ -36,7 +36,8 @@ function weather(options) {
                   <div class=city><input type=text id='city-name' value='" + city + "'></div>\
                   <div class=location-btns>\
                   </div></div>\
-                <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>"
+                <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>\
+                <link rel='stylesheet' type='text/css' href='../widget/weather.css'>"
                );
 
   if (options.geolocationButton !== false) {
