@@ -31,9 +31,14 @@ $light-bg: #EEE;
   .left {
     border-right: 1px solid $light-color;
 
-    img {
-      width: 80%;
-      margin-bottom: -20px;
+    .icon {
+      img {
+        width: 100px;
+      }
+
+      span {
+        margin-top: -20px;
+      }
     }
   }
 
@@ -71,7 +76,7 @@ $light-bg: #EEE;
       bottom: 15px;
 
       * {
-        float: left;
+        float: right;
         cursor: pointer;
       }
     }

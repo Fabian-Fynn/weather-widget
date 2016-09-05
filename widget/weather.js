@@ -35,10 +35,18 @@ function weather(options) {
                   </div>\
                   <div class=city><input type=text id='city-name' value='" + city + "'></div>\
                   <div class=location-btns>\
-                  <div class=geolocation>&#8982;</div><div class=edit-city-name> &#9998;</div>\
-                </div></div>\
+                  </div></div>\
                 <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>"
                );
+
+  if (options.geolocationButton !== false) {
+    $element.find(".location-btns").append("<div class=geolocation>&#8982;</div>");
+  }
+
+  if (options.editCityButton !== false) {
+    $element.find(".location-btns").append("<div class=edit-city-name> &#9998;</div>");
+  }
+
 
   $element.find(".geolocation").click(function(el) {
     geolocate();
@@ -80,7 +88,11 @@ function weather(options) {
     $element.find(".city input").val(res.name);
     $element.find(".current-temp").html(Math.floor(res.main.temp) + tempSymbol);
     $element.find(".temp-range").html(Math.floor(res.main.temp_min) + tempSymbol + " | " + Math.floor(res.main.temp_max) + tempSymbol);
-    $element.find(".icon").html('<img src="http://openweathermap.org/img/w/' + icon + '.png"><span>' + res.weather[0].description + '</span>');
+    $element.find(".icon").html('<img src="http://openweathermap.org/img/w/' + icon + '.png">');
+
+    if (options.conditionName !== false) {
+      $element.find(".icon").append("<span>" + res.weather[0].description + "</span>");
+    }
   }
 
   function getWeatherByGeolocation(pos) {

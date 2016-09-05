@@ -24,9 +24,10 @@
     position: relative; }
   .weather-widget .left {
     border-right: 1px solid #000; }
-    .weather-widget .left img {
-      width: 80%;
-      margin-bottom: -20px; }
+    .weather-widget .left .icon img {
+      width: 100px; }
+    .weather-widget .left .icon span {
+      margin-top: -20px; }
   .weather-widget .right .current-temp {
     font-size: 30pt;
     margin-bottom: -5px;
@@ -50,7 +51,7 @@
     right: 5px;
     bottom: 15px; }
     .weather-widget .right .location-btns * {
-      float: left;
+      float: right;
       cursor: pointer; }
   .weather-widget button {
     border: none;
