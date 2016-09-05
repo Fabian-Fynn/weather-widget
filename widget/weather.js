@@ -15,10 +15,10 @@ function weather(options) {
 
   switch (options.units) {
     case "metric":
-      tempSymbol = "&#x2103;";
+      tempSymbol = "˚C";
       break;
     case "imperial":
-      tempSymbol = "&#x2109;";
+      tempSymbol = "˚F";
       break;
     default:
       tempSymbol = "K";
@@ -33,10 +33,11 @@ function weather(options) {
                   <div class=temp>\
                     <div class=current-temp>" + tempSymbol + "</div>\
                   </div>\
-                  <div class=city><input type=text value='" + city + "'></div>\
+                  <div class=city><input type=text id='city-name' value='" + city + "'></div>\
                   <div class=location-btns>\
                   <div class=geolocation>&#8982;</div><div class=edit-city-name> &#9998;</div>\
-                </div></div>"
+                </div></div>\
+                <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>"
                );
 
   $element.find(".geolocation").click(function(el) {
@@ -44,6 +45,9 @@ function weather(options) {
   });
 
   $element.find(".edit-city-name").click(function(el) {
+    $element.find(".city input").focus();
+    $element.find(".city input").val('');
+
     editCity();
   });
 
@@ -76,7 +80,7 @@ function weather(options) {
     $element.find(".city input").val(res.name);
     $element.find(".current-temp").html(Math.floor(res.main.temp) + tempSymbol);
     $element.find(".temp-range").html(Math.floor(res.main.temp_min) + tempSymbol + " | " + Math.floor(res.main.temp_max) + tempSymbol);
-    $element.find(".icon").html('<img src="http://openweathermap.org/img/w/' + icon + '.png"><p>' + res.weather[0].description + '</p>');
+    $element.find(".icon").html('<img src="http://openweathermap.org/img/w/' + icon + '.png"><span>' + res.weather[0].description + '</span>');
   }
 
   function getWeatherByGeolocation(pos) {
@@ -93,6 +97,8 @@ function weather(options) {
   }
 
   function getWeatherByCityName(city) {
+    city = city.replace(/ /g,"+");
+    console.log(city);
     sendApiRequest('http://api.fabianhoffmann.io/weather/city/' + city + '?units=' + options.units + '&lang=' + options.language).then(function(response) {
       var res = JSON.parse(response);
       displayWeather(res);
@@ -112,9 +118,21 @@ function weather(options) {
 
   function setCity() {
     var $city = $element.find(".city");
-    var city = $city.find("input").val();
-    localStorage.setItem("city", city);
-    getWeatherByCityName(city);
+    var city = $city.find('input').val();
+    var oldCity = localStorage.getItem("city");
+
+    if (city === "") {
+      if (oldCity === null) {
+        city = "N/A";
+      } else {
+        city = oldCity;
+      }
+
+      $city.find('input').val(city);
+    } else {
+      localStorage.setItem("city", city);
+      getWeatherByCityName(city);
+    }
     $city.removeClass("editable");
   }
 
