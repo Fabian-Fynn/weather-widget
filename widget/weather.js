@@ -98,7 +98,6 @@ function weather(options) {
 
   function getWeatherByCityName(city) {
     city = city.replace(/ /g,"+");
-    console.log(city);
     sendApiRequest('http://api.fabianhoffmann.io/weather/city/' + city + '?units=' + options.units + '&lang=' + options.language).then(function(response) {
       var res = JSON.parse(response);
       displayWeather(res);
