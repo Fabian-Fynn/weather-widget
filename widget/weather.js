@@ -15,10 +15,10 @@ function weather(options) {
 
   switch (options.units) {
     case "metric":
-      tempSymbol = "˚C";
+      tempSymbol = "&#xB0;C";
       break;
     case "imperial":
-      tempSymbol = "˚F";
+      tempSymbol = "&#xB0;F";
       break;
     default:
       tempSymbol = "K";
@@ -84,12 +84,12 @@ function weather(options) {
   }
 
   function displayWeather(res) {
-    var icon = res.weather[0].icon;
+    var icon = res.customIcon;
 
     $element.find(".city input").val(res.name);
     $element.find(".current-temp").html(Math.floor(res.main.temp) + tempSymbol);
     $element.find(".temp-range").html(Math.floor(res.main.temp_min) + tempSymbol + " | " + Math.floor(res.main.temp_max) + tempSymbol);
-    $element.find(".icon").html('<img src="http://openweathermap.org/img/w/' + icon + '.png">');
+    $element.find(".icon").html('<img src="http://assets.fabianhoffmann.io/weather-widget/latest/' + icon + '.svg">');
 
     if (options.conditionName !== false) {
       $element.find(".icon").append("<span>" + res.weather[0].description + "</span>");
