@@ -58,6 +58,7 @@ Checkout the demo for a complete example.
 
 ###Options
 All options are nonobligatory.
+
 | Option            | Effect                                        | Values                                        | Default                       |
 |-------------------|-----------------------------------------------|-----------------------------------------------|-------------------------------|
 | element           | Defines the DOM element to put the widget in  | Any DOM ID                                    | weather-widget                |
