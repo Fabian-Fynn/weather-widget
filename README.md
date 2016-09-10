@@ -6,19 +6,20 @@ Never again search for a weather widget that fits the current project.
 It's easy to integrate, modify and style.
 
 ##Included Features
- * Current weather
- * Get location via geolocation or city name
- * Hide unwanted information and buttons:
-    * Weather condition description
-    * Min and max temperature
-    * Geolocation button
-    * "Edit city name"-button
-  * Multiple units
-    * Metric - with Kelvin for temperatures
-    * Metric - with ˚C for temperatures
-    * Imperial
-    * Multilingual support
-  * Condition icons - in SVG format
+* Current weather
+* Get location via geolocation or city name
+* Hide unwanted information and buttons:
+   * Weather condition description
+   * Min and max temperature
+   * Geolocation button
+   * "Edit city name"-button
+
+* Multiple units
+   * Metric - with Kelvin for temperatures
+   * Metric - with ˚C for temperatures
+   * Imperial
+* Multilingual support
+* Condition icons - in SVG format
 
 ##Planned Features
   * Multiple color schemes
