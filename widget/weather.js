@@ -25,7 +25,8 @@ function weather(options) {
   }
 
   //create HTML elements
-  var $element = $("#" + options.element);
+  var elementName = (options.element) ? options.element : "weather-widget";
+  var $element = $("#" + elementName);
   $element.addClass("weather-widget");
   $element.html("<div class=left>\
                   <div class=icon></div>\
