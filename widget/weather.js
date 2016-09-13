@@ -90,7 +90,10 @@ function weather(options) {
     $element.find(".city input").val(res.name);
     $element.find(".current-temp").html(Math.floor(res.main.temp) + tempSymbol);
     $element.find(".temp-range").html(Math.floor(res.main.temp_min) + tempSymbol + " | " + Math.floor(res.main.temp_max) + tempSymbol);
-    $element.find(".icon").html('<img src="http://assets.fabianhoffmann.io/weather-widget/latest/' + icon + '.svg">');
+    $element.find(".icon").html('<img src="../widget/icons/' + icon + '.svg">');
+
+    // Get icons from my Fileserver
+    //$element.find(".icon").html('<img src="http://assets.fabianhoffmann.io/weather-widget/latest/' + icon + '.svg">');
 
     if (options.conditionName !== false) {
       $element.find(".icon").append("<span>" + res.weather[0].description + "</span>");
