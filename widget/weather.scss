@@ -1,5 +1,7 @@
 $light-color: #000;
 $light-bg: #EEE;
+$dark-color: #EEE;
+$dark-bg: #000;
 
 .weather-widget {
   font-family: 'Lato', sans-serif;
@@ -13,6 +15,32 @@ $light-bg: #EEE;
   -webkit-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.64);
   -moz-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.64);
   box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.64);
+
+  // Color scheme options
+  &.dark {
+    background-color: $dark-bg;
+    color: $dark-color;
+
+    .left {
+      border-right: 1px solid $dark-color;
+
+      img.svg{
+        -webkit-filter: contrast(0) brightness(1.7);
+        filter: contrast(0) brightness(1.7);
+      }
+    }
+
+    .right {
+      .city.editable {
+        color: $dark-color;
+      }
+    }
+
+    input {
+      color: $dark-color;
+    }
+  }
+  // End of scheme options
 
   .left, .right {
     width: 150px;

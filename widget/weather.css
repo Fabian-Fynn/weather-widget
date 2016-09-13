@@ -10,6 +10,18 @@
   -webkit-box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.64);
   -moz-box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.64);
   box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.64); }
+  .weather-widget.dark {
+    background-color: #000;
+    color: #EEE; }
+    .weather-widget.dark .left {
+      border-right: 1px solid #EEE; }
+      .weather-widget.dark .left img.svg {
+        -webkit-filter: contrast(0) brightness(1.7);
+        filter: contrast(0) brightness(1.7); }
+    .weather-widget.dark .right .city.editable {
+      color: #EEE; }
+    .weather-widget.dark input {
+      color: #EEE; }
   .weather-widget .left, .weather-widget .right {
     width: 150px;
     height: 100%;

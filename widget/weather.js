@@ -28,6 +28,9 @@ function weather(options) {
   var elementName = (options.element) ? options.element : "weather-widget";
   var $element = $("#" + elementName);
   $element.addClass("weather-widget");
+  if (options.scheme) {
+    $element.addClass(options.scheme);
+  }
   $element.html("<div class=left>\
                   <div class=icon></div>\
                 </div><div class=right>\
@@ -92,10 +95,10 @@ function weather(options) {
     $element.find(".temp-range").html(Math.floor(res.main.temp_min) + tempSymbol + " | " + Math.floor(res.main.temp_max) + tempSymbol);
 
     //Provide icons yourself
-    //$element.find(".icon").html('<img src="../widget/icons/' + icon + '.svg">');
+    //$element.find(".icon").html('<img class="svg" src="../widget/icons/' + icon + '.svg">');
 
     // Get icons from my Fileserver
-    $element.find(".icon").html('<img src="http://assets.fabianhoffmann.io/weather-widget/latest/' + icon + '.svg">');
+    $element.find(".icon").html('<img class="svg" src="http://assets.fabianhoffmann.io/weather-widget/latest/' + icon + '.svg">');
 
     if (options.conditionName !== false) {
       $element.find(".icon").append("<span>" + res.weather[0].description + "</span>");
