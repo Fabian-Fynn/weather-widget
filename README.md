@@ -20,25 +20,28 @@ It's easy to integrate, modify and style.
    * Imperial
 * Multilingual support
 * Condition icons - in SVG format
+* Multiple color schemes
 
 ##Planned Features
-  * Multiple color schemes
+  * Interactive demo
   * Adjustable widget sizes
   * Forecasts
-  * Condition icons - in PNG format
+  * Button to change color schemes
+  * Adjustable widget colors
+
 
 ###Usage
 Just add the follow components to your HTML file:
 
 Include jQuery, the weather.js and weather.css files in the HEAD section of your HTML file:
 
-    <header>
+    <head>
       <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
       <script src="weather.js"></script>
       <link rel="stylesheet" type="text/css" href="weather.css">
-    </header>
+    </head>
 
-The element in which the widget will be placed:
+Add the element in which the widget will be placed:
 
     <body>
       <div id="weather-widget"></div>
