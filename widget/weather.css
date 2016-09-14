@@ -12,16 +12,16 @@
   box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.64); }
   .weather-widget.dark {
     background-color: #000;
-    color: #EEE; }
+    color: #FFF; }
     .weather-widget.dark .left {
-      border-right: 1px solid #EEE; }
+      border-right: 1px solid #FFF; }
       .weather-widget.dark .left .icon img.svg {
         filter: brightness(1);
         -webkit-filter: brightness(1); }
     .weather-widget.dark .right .city.editable {
-      color: #EEE; }
+      color: #FFF; }
     .weather-widget.dark input {
-      color: #EEE; }
+      color: #FFF; }
   .weather-widget .left, .weather-widget .right {
     width: 150px;
     height: 100%;
