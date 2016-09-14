@@ -24,9 +24,9 @@ $dark-bg: #000;
     .left {
       border-right: 1px solid $dark-color;
 
-      img.svg{
-        -webkit-filter: contrast(0) brightness(1.7);
-        filter: contrast(0) brightness(1.7);
+      .icon img.svg{
+        filter: brightness(1);
+        -webkit-filter: brightness(1);
       }
     }
 
@@ -62,6 +62,11 @@ $dark-bg: #000;
     .icon {
       img {
         width: 100px;
+
+        &.svg{
+          filter: brightness(0);
+          -webkit-filter: brightness(0);
+        }
       }
 
       span {
