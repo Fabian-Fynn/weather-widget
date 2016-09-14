@@ -24,6 +24,11 @@ function weather(options) {
       tempSymbol = "K";
   }
 
+  var iconPath = "http://assets.fabianhoffmann.io/weather-widget/latest/";
+  if (options.iconPath) {
+    iconPath = options.iconPath;
+  }
+
   //create HTML elements
   var elementName = (options.element) ? options.element : "weather-widget";
   var $element = $("#" + elementName);
@@ -40,16 +45,15 @@ function weather(options) {
                   <div class=city><input type=text id='city-name' value='" + city + "'></div>\
                   <div class=location-btns>\
                   </div></div>\
-                <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>\
-                <link rel='stylesheet' type='text/css' href='../widget/weather.css'>"
+                <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>"
                );
 
   if (options.geolocationButton !== false) {
-    $element.find(".location-btns").append("<div class=geolocation>&#8982;</div>");
+    $element.find(".location-btns").append('<div class="geolocation"><img class="svg" src="' + iconPath + 'geo.svg"></div>');
   }
 
   if (options.editCityButton !== false) {
-    $element.find(".location-btns").append("<div class=edit-city-name> &#9998;</div>");
+    $element.find(".location-btns").append('<div class="edit-city-name"><img class="svg" src="' + iconPath + 'edit.svg"></div>');
   }
 
 
@@ -98,7 +102,7 @@ function weather(options) {
     //$element.find(".icon").html('<img class="svg" src="../widget/icons/' + icon + '.svg">');
 
     // Get icons from my Fileserver
-    $element.find(".icon").html('<img class="svg" src="http://assets.fabianhoffmann.io/weather-widget/latest/' + icon + '.svg">');
+    $element.find(".icon").html('<img class="svg" src="' + iconPath + icon + '.svg">');
 
     if (options.conditionName !== false) {
       $element.find(".icon").append("<span>" + res.weather[0].description + "</span>");

@@ -2,6 +2,9 @@
   <html lang="en">
   <head>
     <meta charset="utf-8"/>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="../widget/weather.js"></script>
+    <link rel="stylesheet" type="text/css" href="../widget/weather.css">
   </head>
   <body>
   <style>
@@ -17,18 +20,17 @@
     <h1>Weather Demo</h1>
     <div id="weather-widget"></div>
   </body>
-  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-  <script src="../widget/weather.js"></script>
   <script>
     weather({
       element: "weather-widget",
       units: "metric",
       language: "de",
       scheme: "dark",
+      iconPath: "../widget/icons/",
       tempRange: false,
       conditionName: false,
       geolocationButton: true,
-      editCityButton: false
+      editCityButton: true
     });
   </script>
 </html>

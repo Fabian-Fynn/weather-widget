@@ -30,24 +30,29 @@ It's easy to integrate, modify and style.
 ###Usage
 Just add the follow components to your HTML file:
 
+Include jQuery, the weather.js and weather.css files in the HEAD section of your HTML file:
+
+    <header>
+      <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+      <script src="weather.js"></script>
+      <link rel="stylesheet" type="text/css" href="weather.css">
+    </header>
+
 The element in which the widget will be placed:
 
     <body>
       <div id="weather-widget"></div>
     </body>
 
-Include jQuery in HEAD section or before the weather.js file:
-
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="../widget/weather.js"></script>
-
-After that you have to include call the weather function with your desired options:
+After that you have to call the weather function with your desired options:
 
     <script>
       weather({
         element: "weather-widget",
         units: "metric",
         language: "de",
+        scheme: "dark",
+        iconPath: "weather-widget/icons/",
         tempRange: false,
         conditionName: false,
         geolocationButton: false,
@@ -57,6 +62,12 @@ After that you have to include call the weather function with your desired optio
 
 Checkout the demo for a complete example.
 
+###Use my asset server
+You can use my asset server to integrate the weather.js and weather.css files.
+
+    <script src="http://assets.fabianhoffmann.io/weather-widget/latest/weather.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://assets.fabianhoffmann.io/weather-widget/latest/weather.css">
+
 ###Options
 All options are nonobligatory.
 
@@ -65,11 +76,18 @@ All options are nonobligatory.
 | element           | Defines the DOM element to put the widget in  | Any DOM ID                                    | weather-widget                |
 | units             | Defines which unit system to use              | metric, imperial                              | standard (metric with Kelvin) |
 | language          | Defines the language of the weather condition | check http://openweathermap.org/current#multi | en (English)                  |
+| scheme            | Defines desired color scheme                  | dark, light                                   | light                         |
+| iconPath          | Defines the path to the icons                 | PATH                                          | Path to my asset server       |
 | tempRange         | Shows the min and max temperature values      | true, false                                   | true                          |
 | conditionName     | Shows the weather condition description       | true, false                                   | true                          |
 | geolocationButton | Shows the geolocation button                  | true, false                                   | true                          |
 | editCityButton    | Shows the button to edit the city name        | true, false                                   | true                          |
 
+###Icons
+By default the widget uses my icons served by my asset server.
+You can also use the icons provides in the `widget/icons`-directory.
+
+To use custom icons, name the files similar to mine and provide the icons' path via the "iconPath"-option.
 
 ##Contribute
 I'm happy to welcome anyone on board. If you have suggestions or complaints, fire away! Just add an issue.
