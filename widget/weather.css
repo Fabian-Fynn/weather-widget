@@ -17,6 +17,8 @@
       border-right: 1px solid #FFF; }
     .weather-widget.dark .right .city.editable {
       color: #FFF; }
+      .weather-widget.dark .right .city.editable input {
+        border-bottom: 1px solid #FFF !important; }
     .weather-widget.dark input {
       color: #FFF; }
     .weather-widget.dark img.svg {

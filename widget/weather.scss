@@ -28,6 +28,10 @@ $dark-bg: #000;
     .right {
       .city.editable {
         color: $dark-color;
+
+        input {
+          border-bottom: 1px solid $dark-color !important;
+        }
       }
     }
 
