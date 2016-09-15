@@ -19,6 +19,163 @@
   </style>
     <h1>Weather Demo</h1>
     <div id="weather-widget"></div>
+
+  <!-- This is just for the interactive demo -->
+    <style type="text/css">
+      .interactive-btn-wrapper {
+        clear: both;
+        position: relative;
+        top: 30px;
+        left: 50px;
+      }
+      #interactive-btn {
+        width: 150px;
+        height: 40px;
+        font-size: 15px;
+      }
+      #set-options {
+        top: 30px;
+        left: 30px;
+        position: relative;
+        clear: both;
+        width: 200px;
+        display: none;
+      }
+      #set-options .options {
+        padding-left: 0px;
+        resize: none;
+        display: block;
+        width: 200px;
+        height: 20px;
+        border: none;
+        box-sizing: border-box;
+        background: #aaa;
+        overflow: hidden;
+      }
+      #set-options .options.editable {
+        height: 150px;
+        padding-left: 10px;
+        background: #FFF;
+      }
+      textarea:focus {
+        outline: none;
+      }
+      #options-btn {
+        width: 50%;
+        margin-top: 10px;
+        left: 50%;
+        right: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+      }
+      #available-options {
+        clear: both;
+        float: left;
+        margin: 60px 0 0 30px;
+        padding: 10px;
+        display: none;
+      }
+      .tg {
+        border-collapse:collapse;border-spacing:0;background-color: rgba(0, 0, 0, 0.8);}
+      .tg td {font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg th {font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg .tg-yw4l {vertical-align:top}
+    </style>
+
+    <div class="interactive-btn-wrapper">
+      <button id="interactive-btn" onclick="startInteractive()">Interactive mode</button>
+    </div>
+
+    <div id="set-options">
+      <h2>Set Options</h2>
+      <textarea class="options" disabled>
+  weather(
+      </textarea>
+      <textarea class="options editable" id="demoOptions">
+    {
+      element: "weather-widget",
+      units: "metric",
+      language: "de",
+      scheme: "dark",
+      iconPath: "../widget/icons/",
+      tempRange: false,
+      conditionName: false,
+      geolocationButton: true,
+      editCityButton: true
+    }
+      </textarea>
+      <textarea class="options" disabled>
+  );
+      </textarea>
+      <button id="options-btn" onclick="setOptions()">Set</button>
+
+    </div>
+    <div id="available-options">
+
+      <h2>Available Options</h2>
+      <table class="tg">
+      <tr>
+        <th class="tg-yw4l">Option</th>
+        <th class="tg-yw4l">Effect</th>
+        <th class="tg-yw4l">Values</th>
+        <th class="tg-yw4l">Default</th>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">element</td>
+        <td class="tg-yw4l">Defines the DOM element to put the widget in</td>
+        <td class="tg-yw4l">Any DOM ID</td>
+        <td class="tg-yw4l">weather-widget</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">units</td>
+        <td class="tg-yw4l">Defines which unit system to use</td>
+        <td class="tg-yw4l">metric, imperial</td>
+        <td class="tg-yw4l">standard (metric with Kelvin)</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">language</td>
+        <td class="tg-yw4l">Defines the language of the weather condition</td>
+        <td class="tg-yw4l">check http://openweathermap.org/current#multi</td>
+        <td class="tg-yw4l">en (English)</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">scheme</td>
+        <td class="tg-yw4l">Defines desired color scheme</td>
+        <td class="tg-yw4l">dark, light</td>
+        <td class="tg-yw4l">light</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">iconPath</td>
+        <td class="tg-yw4l">Defines the path to the icons</td>
+        <td class="tg-yw4l">PATH</td>
+        <td class="tg-yw4l">Path to my asset server</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">tempRange</td>
+        <td class="tg-yw4l">Show the min and max temperature values</td>
+        <td class="tg-yw4l">true, false</td>
+        <td class="tg-yw4l">true</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">conditionName</td>
+        <td class="tg-yw4l">Show the weather condition description</td>
+        <td class="tg-yw4l">true, false</td>
+        <td class="tg-yw4l">true</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">geolocationButton</td>
+        <td class="tg-yw4l">Show the geolocation button</td>
+        <td class="tg-yw4l">true, false</td>
+        <td class="tg-yw4l">true</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">editCityButton</td>
+        <td class="tg-yw4l">Show the button to edit the city name</td>
+        <td class="tg-yw4l">true, false</td>
+        <td class="tg-yw4l">true</td>
+      </tr>
+      </table>
+    </div>
   </body>
   <script>
     weather({
@@ -32,5 +189,17 @@
       geolocationButton: true,
       editCityButton: true
     });
+
+  //This is just for the interactive demo
+    function setOptions() {
+      var options = $("#demoOptions").val();
+      eval("var options="+options);
+      weather(options);
+    };
+
+    function startInteractive() {
+      $("#set-options").toggle();
+      $("#available-options").toggle();
+    };
   </script>
 </html>
