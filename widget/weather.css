@@ -34,7 +34,7 @@
     .weather-widget .clock.with-seconds {
       font-size: 70px; }
   .weather-widget .left, .weather-widget .right {
-    width: 150px;
+    width: 50%;
     height: 120px;
     float: left;
     box-sizing: border-box;
