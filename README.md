@@ -21,9 +21,13 @@ It's easy to integrate, modify and style.
 * Multilingual support
 * Condition icons - in SVG format
 * Multiple color schemes
+* Interactive demo
+
+##Demo
+Check out the interactive demo:
+http://assets.fabianhoffmann.io/weather-widget/demo/index.html
 
 ##Planned Features
-  * Interactive demo
   * Adjustable widget sizes
   * Forecasts
   * Button to change color schemes
