@@ -20,6 +20,8 @@
       color: #FFF; }
       .weather-widget.dark .right .city.editable input {
         border-bottom: 1px solid #FFF !important; }
+    .weather-widget.dark .clock {
+      border-color: #FFF; }
     .weather-widget.dark input {
       color: #FFF; }
     .weather-widget.dark img.svg {
@@ -28,7 +30,7 @@
   .weather-widget .clock {
     text-align: center;
     font-size: 85px;
-    border-bottom: 1px solid #FFF; }
+    border-bottom: 1px solid #000; }
     .weather-widget .clock.with-seconds {
       font-size: 70px; }
   .weather-widget .left, .weather-widget .right {

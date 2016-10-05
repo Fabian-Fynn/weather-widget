@@ -36,6 +36,10 @@ $dark-bg: #000;
       }
     }
 
+    .clock {
+      border-color: $dark-color;
+    }
+
     input {
       color: $dark-color;
     }
@@ -50,11 +54,12 @@ $dark-bg: #000;
   .clock {
     text-align: center;
     font-size: 85px;
-    border-bottom: 1px solid $dark-color;
+    border-bottom: 1px solid $light-color;
 
     &.with-seconds {
       font-size: 70px;
     }
+
   }
 
   .left, .right {
