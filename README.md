@@ -21,6 +21,7 @@ It's easy to integrate, modify and style.
 * Multilingual support
 * Condition icons - in SVG format
 * Multiple color schemes
+* Clock with optional seconds
 * Interactive demo
 
 ##Demo
@@ -63,7 +64,9 @@ After that you have to call the weather function with your desired options:
         tempRange: false,
         conditionName: false,
         geolocationButton: false,
-        editCityButton: false
+        editCityButton: false,
+        clock: true,
+        seconds: true
       });
     </script>
 
@@ -89,6 +92,9 @@ All options are nonobligatory.
 | conditionName     | Shows the weather condition description       | true, false                                   | true                          |
 | geolocationButton | Shows the geolocation button                  | true, false                                   | true                          |
 | editCityButton    | Shows the button to edit the city name        | true, false                                   | true                          |
+| clock             | Shows digital clock                           | true, false                                   | false                         |
+| seconds           | Shows seconds (if "clock" is set true)        | true, false                                   | false                         |
+
 
 ###Icons
 By default the widget uses my icons served by my asset server.

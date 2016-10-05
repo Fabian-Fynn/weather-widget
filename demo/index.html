@@ -53,7 +53,7 @@
         overflow: hidden;
       }
       #set-options .options.editable {
-        height: 150px;
+        height: 175px;
         padding-left: 10px;
         background: #FFF;
       }
@@ -101,7 +101,9 @@
       tempRange: false,
       conditionName: false,
       geolocationButton: true,
-      editCityButton: true
+      editCityButton: true,
+      clock: true,
+      seconds: true
     }
       </textarea>
       <textarea class="options" disabled>
@@ -178,7 +180,7 @@
     </div>
   </body>
   <script>
-    weather({
+    var weatherObject = new weather({
       element: "weather-widget",
       units: "metric",
       language: "de",
@@ -187,14 +189,17 @@
       tempRange: false,
       conditionName: false,
       geolocationButton: true,
-      editCityButton: true
+      editCityButton: true,
+      clock: true,
+      seconds: true
     });
 
   //This is just for the interactive demo
     function setOptions() {
       var options = $("#demoOptions").val();
       eval("var options="+options);
-      weather(options);
+      window.clearInterval(weatherObject.options.clockInterval);
+      weatherObject = weather(options);
     };
 
     function startInteractive() {

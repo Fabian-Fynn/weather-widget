@@ -1,4 +1,5 @@
 function weather(options) {
+  this.options = options;
   var locationOptions = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -13,7 +14,7 @@ function weather(options) {
 
   var tempSymbol;
 
-  switch (options.units) {
+  switch (this.options.units) {
     case "metric":
       tempSymbol = "&#xB0;C";
       break;
@@ -25,20 +26,27 @@ function weather(options) {
   }
 
   var iconPath = "http://assets.fabianhoffmann.io/weather-widget/latest/";
-  if (options.iconPath) {
-    iconPath = options.iconPath;
+  if (this.options.iconPath) {
+    iconPath = this.options.iconPath;
   }
 
   //create HTML elements
-  var elementName = (options.element) ? options.element : "weather-widget";
+  var elementName = (this.options.element) ? this.options.element : "weather-widget";
   var $element = $("#" + elementName);
+  $element.html("");
 
   $element.attr("class", "weather-widget");
-  if (options.scheme) {
-    $element.addClass(options.scheme);
+  if (this.options.scheme) {
+    $element.addClass(this.options.scheme);
   }
 
-  $element.html("<div class=left>\
+  if (this.options.clock) {
+    $element.append("<div class='clock'></div>");
+    displayClock();
+    this.options.clockInterval = setInterval(displayClock, 1000);
+  }
+
+  $element.append("<div class=left>\
                   <div class=icon></div>\
                 </div><div class=right>\
                   <div class=temp>\
@@ -50,11 +58,11 @@ function weather(options) {
                 <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>"
                );
 
-  if (options.geolocationButton !== false) {
+  if (this.options.geolocationButton !== false) {
     $element.find(".location-btns").append('<div class="geolocation"><img class="svg" src="' + iconPath + 'geo.svg"></div>');
   }
 
-  if (options.editCityButton !== false) {
+  if (this.options.editCityButton !== false) {
     $element.find(".location-btns").append('<div class="edit-city-name"><img class="svg" src="' + iconPath + 'edit.svg"></div>');
   }
 
@@ -85,7 +93,7 @@ function weather(options) {
       setCity();
   });
 
-  if (options.tempRange !== false) {
+  if (this.options.tempRange !== false) {
     $element.find(".temp").append("<div class=temp-range>" + tempSymbol + " | " + tempSymbol + "</div>");
   }
 
@@ -106,7 +114,7 @@ function weather(options) {
     // Get icons from my Fileserver
     $element.find(".icon").html('<img class="svg" src="' + iconPath + icon + '.svg">');
 
-    if (options.conditionName !== false) {
+    if (this.options.conditionName !== false) {
       $element.find(".icon").append("<span>" + res.weather[0].description + "</span>");
     }
   }
@@ -115,7 +123,7 @@ function weather(options) {
     var long = pos.coords.longitude;
     var lat = pos.coords.latitude;
 
-    sendApiRequest('http://api.fabianhoffmann.io/weather/geolocation?longitude=' + long + '&latitude=' + lat + '&units=' + options.units + '&lang=' + options.language).then(function(response) {
+    sendApiRequest('http://api.fabianhoffmann.io/weather/geolocation?longitude=' + long + '&latitude=' + lat + '&units=' + this.options.units + '&lang=' + this.options.language).then(function(response) {
       var res = JSON.parse(response);
       localStorage.setItem("city", res.name);
       displayWeather(res);
@@ -126,7 +134,7 @@ function weather(options) {
 
   function getWeatherByCityName(city) {
     city = city.replace(/ /g,"+");
-    sendApiRequest('http://api.fabianhoffmann.io/weather/city/' + city + '?units=' + options.units + '&lang=' + options.language).then(function(response) {
+    sendApiRequest('http://api.fabianhoffmann.io/weather/city/' + city + '?units=' + this.options.units + '&lang=' + this.options.language).then(function(response) {
       var res = JSON.parse(response);
       displayWeather(res);
     }, function(error) {
@@ -166,6 +174,29 @@ function weather(options) {
   function locationError(err) {
     console.log(err);
   };
+
+  function displayClock() {
+    var $element = $('.weather-widget .clock');
+
+    var dateTime = new Date();
+    var hours = dateTime.getHours();
+    var minutes = dateTime.getMinutes();
+    var seconds = dateTime.getSeconds();
+
+    hours = (hours < 10) ? '0' + hours : hours;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+    var timeString = hours + ':' + minutes;
+    if (this.options.seconds) {
+      timeString += ':' + seconds;
+      $element.addClass('with-seconds');
+    }
+
+    $element.html(timeString);
+  }
+
+  return this;
 };
 
 function sendApiRequest(url) {
