@@ -198,7 +198,7 @@
     function setOptions() {
       var options = $("#demoOptions").val();
       eval("var options="+options);
-      window.clearInterval(weatherObject.options.clockInterval);
+      weatherObject.clearClockInterval();
       weatherObject = weather(options);
     };
 
