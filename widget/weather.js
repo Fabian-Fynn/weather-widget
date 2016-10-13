@@ -1,4 +1,9 @@
 function weather(options) {
+  var self = this;
+
+  if (!options.refreshTimeout) {
+    options.refreshTimeout = 1000*60*5;
+  }
   this.options = options;
   var locationOptions = {
     enableHighAccuracy: true,
@@ -98,8 +103,14 @@ function weather(options) {
   }
 
   if (city !== "N/A") {
+    this.options.city = city;
     getWeatherByCityName(city);
   }
+
+  //auto-update weather
+  setInterval(function(){
+    getWeatherByCityName(self.options.city);
+  }, self.options.refreshTimeout * 1000 * 60);
 
   function displayWeather(res) {
     var icon = res.customIcon;
@@ -126,6 +137,7 @@ function weather(options) {
     sendApiRequest('http://api.fabianhoffmann.io/weather/geolocation?longitude=' + long + '&latitude=' + lat + '&units=' + options.units + '&lang=' + options.language).then(function(response) {
       var res = JSON.parse(response);
       localStorage.setItem("city", res.name);
+      self.options.city = res.name;
       displayWeather(res);
     }, function(error) {
       //displayError(error);
@@ -133,6 +145,7 @@ function weather(options) {
   }
 
   function getWeatherByCityName(city) {
+    console.log('Get weather for: ' + city);
     city = city.replace(/ /g,"+");
     sendApiRequest('http://api.fabianhoffmann.io/weather/city/' + city + '?units=' + options.units + '&lang=' + options.language).then(function(response) {
       var res = JSON.parse(response);
@@ -166,6 +179,7 @@ function weather(options) {
       $city.find('input').val(city);
     } else {
       localStorage.setItem("city", city);
+      self.options.city = city;
       getWeatherByCityName(city);
     }
     $city.removeClass("editable");
@@ -227,3 +241,4 @@ function sendApiRequest(url) {
     req.send();
   });
 }
+

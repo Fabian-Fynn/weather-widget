@@ -23,6 +23,7 @@ It's easy to integrate, modify and style.
 * Multiple color schemes
 * Clock with optional seconds
 * Interactive demo
+* Auto refresh
 
 ##Demo
 Check out the interactive demo:
@@ -66,7 +67,8 @@ After that you have to call the weather function with your desired options:
         geolocationButton: false,
         editCityButton: false,
         clock: true,
-        seconds: true
+        seconds: true,
+        refreshTimeout: 5
       });
     </script>
 
@@ -94,6 +96,7 @@ All options are nonobligatory.
 | editCityButton    | Shows the button to edit the city name        | true, false                                   | true                          |
 | clock             | Shows digital clock                           | true, false                                   | false                         |
 | seconds           | Shows seconds (if "clock" is set true)        | true, false                                   | false                         |
+| refreshTimeout    | Set interval for weather update               | minutes (integer)                            | 5                         |
 
 
 ###Icons

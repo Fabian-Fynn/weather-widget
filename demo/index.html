@@ -53,7 +53,7 @@
         overflow: hidden;
       }
       #set-options .options.editable {
-        height: 175px;
+        height: 185px;
         padding-left: 10px;
         background: #FFF;
       }
@@ -103,7 +103,8 @@
       geolocationButton: true,
       editCityButton: true,
       clock: true,
-      seconds: true
+      seconds: true,
+      refreshTimeout: 5
     }
       </textarea>
       <textarea class="options" disabled>
@@ -176,6 +177,24 @@
         <td class="tg-yw4l">true, false</td>
         <td class="tg-yw4l">true</td>
       </tr>
+      <tr>
+        <td class="tg-yw4l">clock</td>
+        <td class="tg-yw4l">Shows digital clock</td>
+        <td class="tg-yw4l">true, false</td>
+        <td class="tg-yw4l">false</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">seconds</td>
+        <td class="tg-yw4l">Shows seconds (if "clock" is set true)</td>
+        <td class="tg-yw4l">true, false</td>
+        <td class="tg-yw4l">false</td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">refreshTimeout</td>
+        <td class="tg-yw4l">Set interval for weather update</td>
+        <td class="tg-yw4l">minutes (integer)</td>
+        <td class="tg-yw4l">5</td>
+      </tr>
       </table>
     </div>
   </body>
@@ -191,7 +210,8 @@
       geolocationButton: true,
       editCityButton: true,
       clock: true,
-      seconds: true
+      seconds: true,
+      refreshTimeout: 5
     });
 
   //This is just for the interactive demo
