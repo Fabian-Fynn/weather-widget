@@ -51,6 +51,10 @@ $dark-bg: #000;
   }
   // End of scheme options
 
+  &.refresh {
+    background-color: #ff008f;
+  }
+
   .clock {
     text-align: center;
     font-size: 85px;

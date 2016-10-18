@@ -24,6 +24,7 @@ It's easy to integrate, modify and style.
 * Clock with optional seconds
 * Interactive demo
 * Auto refresh
+* Refresh indicator
 
 ##Demo
 Check out the interactive demo:
@@ -68,7 +69,8 @@ After that you have to call the weather function with your desired options:
         editCityButton: false,
         clock: true,
         seconds: true,
-        refreshTimeout: 5
+        refreshTimeout: 5,
+        refreshIndicator: false
       });
     </script>
 
@@ -102,6 +104,7 @@ All options are nonobligatory.
 | clock             | Shows digital clock                           | true, false                                   | false                         |
 | seconds           | Shows seconds (if "clock" is set true)        | true, false                                   | false                         |
 | refreshTimeout    | Set interval for weather update               | minutes (integer)                            | 5                         |
+| refreshIndicator  | Signalize auto refresh                        | true, false                                  | false                          |
 
 
 ###Icons

@@ -38,6 +38,7 @@ function weather(options) {
   //create HTML elements
   var elementName = (options.element) ? options.element : "weather-widget";
   var $element = $("#" + elementName);
+  self.options.$element = $element;
   $element.html("");
 
   $element.attr("class", "weather-widget");
@@ -110,6 +111,9 @@ function weather(options) {
   //auto-update weather
   setInterval(function(){
     getWeatherByCityName(self.options.city);
+    if(self.options.refreshIndicator) {
+      indicateRefresh();
+    }
   }, self.options.refreshTimeout * 1000 * 60);
 
   function displayWeather(res) {
@@ -187,6 +191,14 @@ function weather(options) {
 
   function locationError(err) {
     console.log(err);
+  };
+
+  function indicateRefresh() {
+    var $el = self.options.$element;
+    $el.addClass("refresh");
+    setTimeout(function() {
+      $el.removeClass("refresh");
+    }, 200);
   };
 
   function displayClock() {
