@@ -28,7 +28,7 @@
       filter: brightness(1) !important;
       -webkit-filter: brightness(1) !important; }
   .weather-widget.refresh {
-    background-color: #ff008f; }
+    background-color: #ff008f !important; }
   .weather-widget .clock {
     text-align: center;
     font-size: 85px;
