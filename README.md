@@ -74,6 +74,11 @@ After that you have to call the weather function with your desired options:
 
 Checkout the demo for a complete example.
 
+####Sass
+The styles are written in SCSS and have to be converted to CSS using following command:
+
+    sass --watch widget/weather.scss:widget/weather.css
+
 ###Use my asset server
 You can use my asset server to integrate the weather.js and weather.css files.
 
